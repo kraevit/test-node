@@ -40,7 +40,8 @@ fs.readFile('./docs/post-1.txt', (err, data) => {
     console.log(err)
   }
   console.log(data); // <Buffer>
-  console.log(data.toString());
+  console.log(data.toString()
+});
 
 // write in file (replace the content)
 
