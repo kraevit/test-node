@@ -149,3 +149,38 @@ server.listen(port, hostname, () => {
 });
 
 ```
+
+### Requests and Responses
+
+```javascript
+
+// Bad :) Example of Sending HTML to the Browser
+
+const http = require('http');
+http.createServer((req, res) => {
+
+  // The Request Object
+  console.log(req.url, req.method);
+
+  // The Response Object:
+
+  // Step 1: Setting up The Header Content-Type
+  // res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Type', 'text/html');
+
+  // Step 2: Send HTML back to the Browser ( BAD WAY )
+  res.write('<head><link rel="stylesheet" type="text/css" href="#"></head>');
+  res.write('<p>hello, minjas</p>');
+  res.write('<p>hello, agen</p>');
+  res.end();
+
+});
+
+server.listen(3000, () => {
+  console.log('Listening for requests on port 3000');
+});
+
+```
+
+### Returning HTML Page
+
