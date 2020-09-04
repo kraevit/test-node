@@ -1,7 +1,5 @@
-// Streams & Buffers
-// read and write data to a LARGE files
-
-// Streams - start using data, before it has finished loading
+// READ AND WRITE DATA - LARGE FILES
+// STREAMS - START USING DATA, BEFORE IT HAS FINISHED LOADING
 const fs = require('fs');
 
 const readStream = fs.createReadStream('./docs/blog3.txt', { encoding: 'utf-8'});
