@@ -7,7 +7,7 @@ const server = http.createServer((req, res) => {
   res.setHeader('Content-Type', 'text/html');
 
   // basic ROUTING
-  let path = './views';
+  let path = './views/';
   switch(req.url) {
     case '/':
       path += 'index.html';
