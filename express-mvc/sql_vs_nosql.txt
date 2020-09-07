@@ -1,0 +1,16 @@
+#######
+# SQL #		
+#######
+tables		
+rows		
+columns		
+
+#########
+# nosql #
+#########
+collections
+documents
+mongobd
+
+
+

@@ -1,0 +1,8 @@
+###################
+Middleware Examples
+###################
+
+* Logger middleware to log details of every request
+* Authentication check middleware for protected routes
+* Middleware to parse JSON data from requests
+* Return 404 pages
