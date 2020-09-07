@@ -124,6 +124,11 @@ app.post('/blogs', (req, res) => {
     });
 });
 
+// Make sure you place the blogs/create GET route ABOVE the /blogs/:id GET route in the code. Otherwise express will fire the /blogs/:id handler for requests to /blogs/create.
+app.get('/blogs/create', (req, res) => {
+  res.render('create', { title: 'Create a new blog' });
+});
+
 // Route params using :id
 app.get('/blogs/:id', (req, res) => {
   const id = req.params.id;
@@ -147,10 +152,6 @@ app.delete('/blogs/:id', (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-});
-
-app.get('/blogs/create', (req, res) => {
-  res.render('create', { title: 'Create a new blog' });
 });
 
 // 301 Redirect
