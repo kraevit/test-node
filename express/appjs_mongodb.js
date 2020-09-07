@@ -31,6 +31,7 @@ app.set('view engine', 'ejs');
 
 // Middleware & Static Files
 app.use(express.static('public'));
+app.use(express.urlencoded({extended: true})); // allows accepting form data !!!!!!!!
 app.use(morgan('dev'));
 
 // Mongoose and Mongo Sandbox Routes
@@ -98,6 +99,50 @@ app.get('/blogs', (req, res) => {
   Blog.find().sort({createdAt: -1})
     .then((result) => {
       res.render('index', {title: 'All Blogs', blogs: result});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// POST REQUESTS
+
+// When we access the localhost:3000/blogs/create page from the client(browser) server renders create.ejs file from views folder
+
+// than we handle the post request send from the webform, retrieve form data and save this data to the database. 
+
+app.post('/blogs', (req, res) => {
+
+  const blog = new Blog(req.body); // req.body == {} from webform allowed from this middleware app.use(express.urlencoded({extended: true}));" line: 34
+
+  blog.save()
+    .then((result) => {
+      res.redirect('/blogs'); // 301
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// Route params using :id
+app.get('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  // console.log(id);
+  Blog.findById(id)
+    .then((result) => {
+      res.render('details', {title: 'Blog Details', blog: result});
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+// DELETE Request Handler
+app.delete('/blogs/:id', (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    then((result) => {
+      res.json({ redirect: '/blogs' });
     })
     .catch((err) => {
       console.log(err);
