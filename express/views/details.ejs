@@ -21,14 +21,10 @@
 
     trash.addEventListener('click', (event) => {
       const endpoint = `/blogs/${trash.dataset.doc}`;
-      fetch(endpoint, {
-        method: 'DELETE'
-      })
-      .then((response => response.json())
-      .then(data => window.location.href = data.redirect)
-      .catch((err) => {
-        console.log(err);
-      });
+      fetch(endpoint, { method: 'DELETE' })
+        .then((response) => response.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch((err) => console.log(err));
     });
 
   </script>
